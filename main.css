@@ -1,0 +1,38 @@
+.already-done {
+  cursor: pointer;
+}
+
+.clear, .time {
+  text-align: center;
+}
+
+.functional-box {
+  text-align: center;
+}
+
+.item-list {
+  text-align: center;
+}
+
+.outer-box {
+  width: 100%;
+}
+
+.item-label, .item-time {
+  display: inline-block;
+  width: 40%;
+  text-align: center;
+}
+
+.title, .start, .end {
+  height: 50px;
+  font-size: 28px;
+}
+
+.start {
+  background-color: aquamarine;
+}
+
+.end {
+  background-color: chocolate;
+}

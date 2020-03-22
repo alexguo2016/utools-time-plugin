@@ -1,0 +1,14 @@
+{
+	"pluginName": "timer",
+	"description": "时间记录-最简单的插件",
+	"main": "index.html",
+	"version": "0.0.1",
+	"logo": "logo.png",
+	"features": [
+	    {
+			"code": "timer",
+			"explain": "hello world",
+	        "cmds":["timer", "你好"]
+	    }
+	]
+}
