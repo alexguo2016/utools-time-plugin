@@ -32,13 +32,21 @@ var timeToMs = (timeStr) => {
     var m = str.substring(hIndex+2, mIndex)
     var s = str.substring(mIndex+2, sIndex)
     // log('h', h, 'm', m, 's', s)
-    var ms = parseInt(h * 3600 + m * 60 + s)
-    // log(ms)
+    var ms = parseInt(h * 3600 + m * 60 + s * 1)
+    // log('ms-->', ms)
     return ms
 }
 /**
  * test
  */
+var testFun = (input, assume) => {
+    if (input == assume) {
+        return true
+    } else {
+        log('input', input, 'assume', assume)
+        return false
+    }
+}
 // var test1 = '2小时7分钟26秒'
 // var test2 = '2小时0分钟26秒'
 // var test3 = '2小时7分钟0秒'
@@ -46,10 +54,10 @@ var timeToMs = (timeStr) => {
 // var test5 = '0小时0分钟26秒'
 // var test6 = '0小时7分钟0秒'
 // var test7 = '2小时7分钟0秒'
-// timeToMs(test1)
-// timeToMs(test2)
-// timeToMs(test3)
-// timeToMs(test4)
-// timeToMs(test5)
-// timeToMs(test6)
-// timeToMs(test7)
+// testFun(timeToMs(test1), 2 * 3600 + 7 * 60 + 26)
+// testFun(timeToMs(test2), 2 * 3600 + 26)
+// testFun(timeToMs(test3), 2 * 3600 + 7 * 60)
+// testFun(timeToMs(test4), 7 * 60 + 26)
+// testFun(timeToMs(test5), 26)
+// testFun(timeToMs(test6), 7 * 60)
+// testFun(timeToMs(test7), 2 * 3600 + 7 * 60)
