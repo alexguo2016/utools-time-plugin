@@ -61,3 +61,25 @@ var testFun = (input, assume) => {
 // testFun(timeToMs(test5), 26)
 // testFun(timeToMs(test6), 7 * 60)
 // testFun(timeToMs(test7), 2 * 3600 + 7 * 60)
+
+/**
+ * 返回本地缓存数据
+ * @param {string} key 
+ */
+var getStorage = (key) => {
+    var item = localStorage.getItem(key)
+    if (item) {
+        return JSON.parse(item)
+    } else {
+        return []
+    }
+}
+
+/**
+ * 存到本地缓存
+ * @param {string} key 
+ * @param {string} item 
+ */
+var setStorage = (key, item) => {
+    localStorage.setItem(key, item)
+}

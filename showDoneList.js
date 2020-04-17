@@ -31,6 +31,9 @@ var createListDom = (doneList) => {
                     <div class="item-time">
                         ${e.time}
                     </div>
+                    <div class="item-del" data-label=${e.title}>
+                        X
+                    </div>
                 </div>
             </li>
         `
@@ -40,11 +43,15 @@ var createListDom = (doneList) => {
     return res
 }
 
+/**
+ * 将输入框和计时器的数据写入 localStorage
+ * 写入的是 JSON.stringify 的字符串
+ */
 var setDones = () => {
     var title = find('.title').value
     var time = find('.time').innerHTML
     // var clock = countUp // 这个做法是不对的, 还是直接转换过来把..
-    log('time-->', time)
+    // log('time-->', time)
     var clock = timeToMs(time)
     var item = {
         title,
@@ -58,7 +65,10 @@ var setDones = () => {
     localStorage.setItem('dones', donesStr)
 }
 
-
+/**
+ * 读取 localStorage
+ * 输出 JSON.stringify 的字符串
+ */
 var getDones = () => {
     var dones = localStorage.getItem('dones') || []
     var str = JSON.stringify(dones)
@@ -128,3 +138,32 @@ var combineSame = (donesArr) => {
 }
 
 // combineSame(testArr)
+
+/**
+ * 根据传入的 label, 删除相应的记录
+ * 记录在 localStorage 里面
+ * 1. 读取
+ * 2. 删除
+ * 3. 写入
+ * @param {string} label 
+ */
+var delItem = label => {
+    // 读取
+    var  donesStr = getDones() 
+    var dones = JSON.parse(JSON.parse(donesStr))
+    log(dones, typeof dones)
+    // 删除
+    var res = []
+    for (var i = 0; i < dones.length; i++) {
+        var e = dones[i]
+        var eLabel = e.title
+        log(eLabel, label, e)
+        if (eLabel != label) {
+            res.push(e)
+        }
+    }
+    // log('res', res)
+    // 写入
+    var str = JSON.stringify(res)
+    setStorage('dones', str)
+}
